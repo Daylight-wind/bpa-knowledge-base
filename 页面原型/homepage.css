@@ -1,0 +1,25 @@
+/* Homepage-only iteration. Other pages retain the 15:48 design. */
+.academy-home{--academy-blue:#4055b5;--academy-ink:#30313a;--academy-muted:#676770;max-width:1200px;margin:0 auto;padding:0 40px 64px;color:var(--academy-ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.academy-hero{padding:72px 0 60px}.academy-name{font-size:25px;line-height:1.4;font-weight:650;color:var(--academy-blue);margin:0 0 18px}.academy-hero h1{font-size:58px;line-height:1.22;letter-spacing:0;font-weight:700;margin:0;max-width:900px}.academy-description{font-size:19px;line-height:1.8;color:var(--academy-muted);margin:24px 0 0}.mobile-break{display:none}
+.academy-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}.academy-actions a{display:inline-flex;align-items:center;gap:22px;border-radius:24px;padding:12px 22px;font-size:15px;font-weight:600;transition:background .15s}.academy-primary{background:var(--academy-blue);color:#fff}.academy-primary:hover{background:#344795}.academy-secondary{background:#ededf1;color:var(--academy-ink)}.academy-secondary:hover{background:#e1e2e9}
+.academy-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.academy-card{display:flex;flex-direction:column;background:#f6f6f7;border:1px solid transparent;border-radius:12px;padding:28px;transition:background .15s,border-color .15s}.academy-card:hover{background:#f0f1f6;border-color:#d9ddec}.academy-icon{display:grid;place-items:center;width:46px;height:46px;background:#e9eaf0;border-radius:9px;color:var(--academy-blue);margin-bottom:22px}.academy-icon svg{width:25px;height:25px}.academy-card h2{font-size:20px;line-height:1.5;font-weight:600;margin:0 0 10px}.academy-card p{font-size:15px;line-height:1.85;color:var(--academy-muted);margin:0 0 24px}.academy-card-action{display:flex;align-items:center;justify-content:space-between;margin-top:auto;color:var(--academy-blue);font-size:13px;font-weight:500}.academy-home a:focus-visible{outline:3px solid var(--academy-blue);outline-offset:4px}
+@media(min-width:1600px){.academy-home{max-width:1320px}.academy-hero{padding-top:88px;padding-bottom:72px}.academy-hero h1{font-size:64px}}
+@media(max-width:800px){.academy-home{padding:0 24px 40px}.academy-hero{padding:44px 0 38px}.academy-name{font-size:20px;margin-bottom:16px}.academy-hero h1{font-size:42px}.academy-description{font-size:16px;margin-top:20px}.academy-cards{grid-template-columns:1fr;gap:14px}.academy-card{padding:24px}.academy-icon{margin-bottom:16px}.academy-card p{margin-bottom:20px}.academy-actions{margin-top:26px}.mobile-break{display:block}}
+@media(max-width:430px){.academy-hero h1{font-size:36px}.academy-name{font-size:18px}.academy-description{font-size:14px}.academy-actions a{font-size:13px;padding:11px 18px;gap:14px}}
+.academy-main-entries{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.academy-main-entry{display:flex;flex-direction:column;min-height:260px;background:#f6f6f7;border-radius:12px;padding:30px;transition:background .15s,border-color .15s}.academy-main-entry:hover{background:#eff0f5}.academy-main-entry .academy-icon{margin-bottom:24px}.academy-main-entry h2{font-size:26px;margin:0 0 10px}.academy-main-entry>div>p:last-child{font-size:15px;line-height:1.85;color:var(--academy-muted);max-width:390px;margin:0}.academy-kicker{font-size:12px;color:var(--academy-blue);margin:0 0 10px}.academy-main-entry .academy-card-action{margin-top:auto;padding-top:24px}.academy-portal-note{display:block;margin-top:22px;color:var(--academy-muted);font-size:14px}.academy-portal-note span:last-child{color:var(--academy-blue);margin-left:4px}.academy-portal-note>span:first-child{color:var(--academy-ink);font-weight:600;margin-right:8px}@media(max-width:800px){.academy-main-entries{grid-template-columns:1fr;gap:14px}.academy-main-entry{min-height:220px;padding:24px}.academy-main-entry h2{font-size:22px}.academy-portal-note{font-size:13px;line-height:1.8}} 
+
+/* 首页入口采用更亲切的 emoji 视觉提示，降低内部术语的距离感。 */
+.academy-emoji {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 16px;
+  background: #f3f7ff;
+  font-size: 30px;
+  line-height: 1;
+}
+@media (max-width: 680px) {
+  .academy-emoji { width: 44px; height: 44px; flex-basis: 44px; font-size: 25px; }
+}

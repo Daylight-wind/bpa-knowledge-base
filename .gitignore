@@ -1,0 +1,5 @@
+.bpa-sync-manifest.json
+构建结果/
+__pycache__/
+*.pyc
+.DS_Store
