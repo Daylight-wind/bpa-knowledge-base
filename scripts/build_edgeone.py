@@ -22,10 +22,11 @@ def main():
     if any(a.get('status') != 'published' for a in articles):
         raise ValueError('发布结果包含非 published 文章，构建已停止。')
     revision = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    dirty = bool(subprocess.run(['git', 'status', '--porcelain', '--untracked-files=all'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip())
     staging = Path(tempfile.mkdtemp(prefix='.dist-stage-', dir=ROOT))
     try:
         shutil.copytree(published, staging, dirs_exist_ok=True)
-        (staging / 'build-version.json').write_text(json.dumps({'git_commit': revision, 'generated_at_utc': datetime.now(timezone.utc).isoformat(), 'article_count': len(articles)}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        (staging / 'build-version.json').write_text(json.dumps({'git_commit': revision, 'source_dirty': dirty, 'generated_at_utc': datetime.now(timezone.utc).isoformat(), 'article_count': len(articles)}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         if OUTPUT.is_symlink():
             raise ValueError('dist 是符号链接，拒绝替换。')
         if OUTPUT.exists():
