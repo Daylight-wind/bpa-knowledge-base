@@ -1,7 +1,21 @@
-.bpa-sync-manifest.json
-构建结果/
-__pycache__/
-*.pyc
-.DS_Store
+# 默认不纳入项目根目录下的历史资料、备份和构建产物
+/*
+!/.gitignore
+!/README.md
+!/scripts/
+!/tests/
+!/流程管理平台学习内容库/
+!/页面原型/
 
-dist/
+# 页面原型仅使用这两份样式
+/页面原型/*
+!/页面原型/styles.css
+!/页面原型/homepage.css
+
+# 本地配置和历史同步脚本不参与发布仓库
+/流程管理平台学习内容库/.obsidian/
+/scripts/prepare_deployment_repository.py
+/scripts/build_content.py
+**/.DS_Store
+**/__pycache__/
+*.pyc
