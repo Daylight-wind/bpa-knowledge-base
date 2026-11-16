@@ -7,3 +7,5 @@
 运行 `python3 scripts/build_site.py publish` 生成 `构建结果/发布包/`。只有 status 为 published 的文章进入网站；draft 与 review 不进入正式构建。上传图标仅生成文件，不会上传。
 
 网站部署与仓库访问权限是两个不同问题。连接 EdgeOne 前，应确认受控访问方式并验证；Git 历史含草稿和管理员内容。
+
+EdgeOne 构建命令：`python3 scripts/build_edgeone.py`；输出目录为 `dist`。构建环境必须提供 Python 3 和 Git；尚需在 EdgeOne 测试确认。若没有 published 文章，命令会失败以避免发布空网站。生成的 build-version.json 记录提交和构建时间。切勿将草稿预览配置为正式部署。
