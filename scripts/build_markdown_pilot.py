@@ -68,6 +68,16 @@ def normalized_heading(value):
     return re.sub(r'\s+', ' ', unquote(value).strip()).casefold()
 
 
+def safe_html_break(state, silent):
+    match = re.match(r'<br\s*/?>', state.src[state.pos:state.posMax], re.I)
+    if not match:
+        return False
+    if not silent:
+        state.push('hardbreak', 'br', 0)
+    state.pos += len(match.group(0))
+    return True
+
+
 def obsidian_highlight(state, silent):
     if not state.src.startswith('==', state.pos):
         return False
@@ -87,6 +97,7 @@ def obsidian_highlight(state, silent):
 class Builder:
     def __init__(self, allowed_statuses=None, asset_prefix='generated/pilot-assets/', attachments=False):
         self.md = MarkdownIt('commonmark', {'html': False}).enable('table').enable('strikethrough')
+        self.md.inline.ruler.before('html_inline', 'safe_html_break', safe_html_break)
         self.md.inline.ruler.before('emphasis', 'obsidian_highlight', obsidian_highlight)
         self.docs = {}
         self.ids = {}

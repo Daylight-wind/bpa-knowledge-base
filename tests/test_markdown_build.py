@@ -99,6 +99,22 @@ print("[[第二篇]]")
         build.build()
         self.assertIn('#article/numbered', self.output()[0]['sections'][0]['html'])
 
+    def test_safe_html_break_in_table_and_literal_code(self):
+        build.SOURCE.write_text(note('first', '第一篇', '''## 内容
+
+| 标题 | 描述 |
+| --- | --- |
+| 一 | 前<br>后<BR />尾 |
+
+`<br>` <script>alert(1)</script> <br onclick="alert(1)">
+'''), encoding='utf-8')
+        build.build()
+        html = self.output()[0]['sections'][0]['html']
+        self.assertIn('前<br />\n后<br />\n尾', html)
+        self.assertIn('<code>&lt;br&gt;</code>', html)
+        self.assertIn('&lt;script&gt;', html)
+        self.assertNotIn('<br onclick', html)
+
     def test_missing_link_fails_without_replacing_previous_output(self):
         build.SOURCE.write_text(note('first','第一篇','## 内容\n\n[[不存在]]'),encoding='utf-8')
         build.OUTPUT.write_text('old output', encoding='utf-8')
