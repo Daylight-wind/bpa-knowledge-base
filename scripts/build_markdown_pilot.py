@@ -221,7 +221,16 @@ class Builder:
         for t in tokens:
             if t.type == 'inline':
                 self.transform_inline(doc, t)
-        # Preserve complete Markdown blocks; h2 titles drive the existing page TOC.
+        # Preserve complete Markdown blocks while collecting every heading for navigation.
+        toc = []
+        skipped_main_heading = False
+        for i, token in enumerate(tokens):
+            if token.type != 'heading_open':
+                continue
+            if token.tag == 'h1' and not skipped_main_heading:
+                skipped_main_heading = True
+                continue
+            toc.append({'id': token.attrGet('id'), 'title': tokens[i + 1].content, 'level': int(token.tag[1])})
         sections, current = [], None
         def ensure():
             nonlocal current
@@ -254,7 +263,7 @@ class Builder:
             plain = ' '.join(plain_parts)
             out.append({'id': section['id'], 'title': section['title'], 'html': self.md.renderer.render(section['tokens'], self.md.options, {}), 'text': plain})
         m = doc['meta']; sources = m.get('source', [])
-        return {'id': m['id'], 'titleAnchor': doc['title_anchor'], 'title': doc['title'], 'short': doc['title'], 'category': m['category'], 'audience': m['audience'], 'intro': '当前内容为学习草稿，正式使用前需核验。', 'source': '；'.join(sources) if isinstance(sources, list) else sources, 'sections': out}
+        return {'id': m['id'], 'titleAnchor': doc['title_anchor'], 'title': doc['title'], 'short': doc['title'], 'category': m['category'], 'audience': m['audience'], 'intro': '当前内容为学习草稿，正式使用前需核验。', 'source': '；'.join(sources) if isinstance(sources, list) else sources, 'sections': out, 'toc': toc}
 
     def build(self):
         self.load(SOURCE)

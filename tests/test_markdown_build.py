@@ -93,6 +93,15 @@ print("[[第二篇]]")
         self.assertIn('<code>==原样==</code>', html)
         self.assertIn('==未闭合', html)
 
+    def test_navigation_includes_nested_headings_with_matching_anchors(self):
+        build.SOURCE.write_text(note('first', '第一篇', '## 第一节\n\n内容\n\n### 子章节\n\n内容\n\n#### 更细的标题\n\n内容\n\n## 第二节\n\n内容'), encoding='utf-8')
+        build.build()
+        article = self.output()[0]
+        self.assertEqual([(h['title'], h['level']) for h in article['toc']],
+                         [('第一节', 2), ('子章节', 3), ('更细的标题', 4), ('第二节', 2)])
+        self.assertEqual(article['toc'][0]['id'], article['sections'][0]['id'])
+        self.assertIn(f'id="{article["toc"][1]["id"]}"', article['sections'][0]['html'])
+
     def test_numbered_note_name_without_extension(self):
         (build.VAULT/'3.1 示例文章.md').write_text(note('numbered', '3.1 示例文章', '## 内容\n\n文字'), encoding='utf-8')
         build.SOURCE.write_text(note('first', '第一篇', '## 内容\n\n[[3.1 示例文章|阅读文章]]'), encoding='utf-8')
