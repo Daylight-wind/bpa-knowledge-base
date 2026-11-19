@@ -28,7 +28,7 @@ function home() {
   return `<div class="academy-home"><section class="academy-hero" aria-labelledby="academy-title">
     <p class="academy-name">流程管理平台学习与操作中心</p><h1 id="academy-title">理解流程管理，<br>掌握流程管理平台操作。</h1>
     <p class="academy-description">选择适合自己的学习路径，<br class="mobile-break">学习平台使用与日常操作。</p>
-    </section><section id="choose-path" class="role-home" aria-labelledby="role-heading"><div class="role-home-heading"><div><p class="eyebrow">LEARNING PATHS</p><h2 id="role-heading">选择您的学习路径</h2></div><p>从自己的工作出发，找到需要学习的内容。</p></div>
+    </section><section id="choose-path" class="role-home" aria-label="选择学习路径">
     <div class="role-cards">${roleCards()}</div></section></div>`;
 }
 const roleModules = {

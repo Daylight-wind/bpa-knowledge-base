@@ -2,13 +2,14 @@
 .prototype-note[hidden]{display:none}
 .academy-emoji{border-radius:8px}
 .article-section img{display:block;max-width:100%;height:auto;margin:20px auto}
-.article-section{font-size:16px;line-height:1.8}
-.article-section>p{font-size:inherit;line-height:1.8}
+.article-section{font-size:16px;line-height:1.8;color:#242d40}
+.article-section>p{font-size:inherit;line-height:1.8;color:inherit}
+.article-section>p+p{margin-top:1em}
 .article-section h2{font-size:23px}
 .article-section+.article-section{margin-top:38px;padding-top:32px;border-top:1px solid var(--line)}
 .article-section pre{max-width:100%;overflow:auto;padding:16px;background:#f4f5f7}
 .article-section table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse}
-.article-section th,.article-section td{border:1px solid #dce2ef;padding:8px 12px;text-align:left}
+.article-section th,.article-section td{border:1px solid #dce2ef;padding:8px 12px;text-align:left;color:inherit}
 .article-section blockquote{margin:18px 0;padding:2px 18px;border-left:3px solid #7584ce;background:#f6f7fb}
 .article-section li{margin:6px 0}
 .article-section a{color:#4055b5;text-decoration:underline}
@@ -41,7 +42,7 @@
 .reading-layout{grid-template-columns:214px minmax(0,760px) 238px;grid-template-areas:"local article all"}
 .page-toc{grid-area:local;display:block;max-height:calc(100vh - 110px);overflow:auto;padding-right:18px}
 .page-details summary{font-size:12px;font-weight:650;margin-bottom:16px;cursor:pointer}
-.page-details>button{display:block;background:none;border:0;border-left:1px solid #e1e6ef;text-align:left;font-size:11px;line-height:1.8;padding:8px 12px;color:#738099;width:100%}
+.page-details>button{display:block;background:none;border:0;border-left:1px solid #e1e6ef;text-align:left;font-size:11px;line-height:1.8;padding:8px 12px;color:#4c5a71;width:100%}
 .page-details>button:hover{color:var(--blue);border-color:var(--blue)}
 .article{grid-area:article}
 .chapter-sidebar{grid-area:all;border-right:0;border-left:1px solid var(--line);padding:31px 0 40px 24px}
@@ -61,6 +62,9 @@
 .page-details .heading-level-4{padding-left:34px}
 .page-details .heading-level-5,.page-details .heading-level-6{padding-left:46px}
 .role-home-heading h2{display:inline-block;padding:11px 21px;border-radius:24px;background:var(--academy-blue,#415ccc);color:#fff;font-size:16px;font-weight:600;letter-spacing:0}
+.academy-home .academy-hero{padding-bottom:28px}
+.academy-home .role-home{padding-top:0}
+@media(max-width:800px){.academy-home .academy-hero{padding-bottom:22px}}
 .role-course .role-toc-row{display:flex;align-items:flex-start}
 .role-course .role-toc-toggle{display:grid;place-items:center;flex:0 0 40px;min-height:40px;padding:0;border:0;background:transparent;color:#6b7b9b;border-radius:5px}
 .role-course .role-toc-toggle:hover{color:var(--blue);background:var(--pale)}
