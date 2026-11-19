@@ -2,12 +2,17 @@
 .prototype-note[hidden]{display:none}
 .academy-emoji{border-radius:8px}
 .article-section img{display:block;max-width:100%;height:auto;margin:20px auto}
+.article-section{font-size:16px;line-height:1.8}
+.article-section>p{font-size:inherit;line-height:1.8}
+.article-section h2{font-size:23px}
+.article-section+.article-section{margin-top:38px;padding-top:32px;border-top:1px solid var(--line)}
 .article-section pre{max-width:100%;overflow:auto;padding:16px;background:#f4f5f7}
 .article-section table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse}
 .article-section th,.article-section td{border:1px solid #dce2ef;padding:8px 12px;text-align:left}
 .article-section blockquote{margin:18px 0;padding:2px 18px;border-left:3px solid #7584ce;background:#f6f7fb}
 .article-section li{margin:6px 0}
 .article-section a{color:#4055b5;text-decoration:underline}
+@media(max-width:800px){.article-section h2{font-size:21px}.article-section+.article-section{margin-top:32px;padding-top:26px}}
 .page-toc button,.stage-articles a b{overflow-wrap:anywhere}
 .empty-state{padding:28px 0;color:#68707c}
 
